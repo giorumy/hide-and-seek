@@ -1,35 +1,29 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 import { useEffect, useRef, useState } from "react";
+
 import { Pressable, StyleSheet, Text, View } from "react-native";
+
 import Animated, {
   FadeInUp,
   FadeOutUp,
   LinearTransition,
 } from "react-native-reanimated";
+
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+
 import { LinearGradient } from "expo-linear-gradient";
 
 export type Effect = {
   id: string;
-
-  /** Text shown in the pill. */
   label: string;
-
-  /** If set, a mm:ss countdown is shown on the right of the pill. */
   countdownSeconds?: number;
-
-  /** Called once when this effect's countdown reaches zero. */
   onCountdownEnd?: () => void;
 };
 
 export type EffectsBannerProps = {
-  /** The active effects. The banner renders nothing when this is empty. */
   effects: Effect[];
-
-  /** Overrides the header text. Defaults to "N effects active". */
   title?: string;
-
-  /** Whether the list starts expanded. Defaults to true. */
   defaultExpanded?: boolean;
 };
 
@@ -41,7 +35,6 @@ const COLORS = {
 function formatTime(totalSeconds: number) {
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
-
   return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 }
 
@@ -194,7 +187,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 999,
     overflow: "hidden",
-
     shadowColor: COLORS.shadow,
     shadowOpacity: 0.25,
     shadowRadius: 4,
